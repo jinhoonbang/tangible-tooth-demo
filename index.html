@@ -5,36 +5,49 @@
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 
-<script type="text/javascript" src="dopelessHotspots/scripts/dopelessHotspots.min.js"></script>
+<script type="text/javascript" src="dopelessHotspots/scripts/dopelessHotspots.js"></script>
 
 </head>
 
 <body>
   <div id="my_hotspot">
+    <button onclick="signal1()">Button             #1</button>
+    <button onclick="signal2()">Button            #2</button>
+    <button onclick="signal3()">Button            #3</button>
+    <button onclick="hide()">Hide               .</button>
     <img src="tooth.jpg" />
 
-    <a class='sethotspot' href='#' title='Serrated Edge' posix='76' posiy='52'>This is the serrated edge</a>
+    <a id = 'ab' class='sethotspot' href='#' title='Serrated Edge' posix='76' posiy='52'>This is not a serrated edge</a>
 
-    <a class='sethotspot' href='#' title='Tooth Tip' posix='48' posiy='92'>The tooth tip tells scientists about its diet</a>
+    <a id = 'bc' class='sethotspot' href='#' title='Ridge' posix='48' posiy='70'>The ridge is not angled</a>
 
-    <a class='sethotspot' href='#' title='Root Lobe' posix='35' posiy='25'>The root lobe tells us something </a>
-
-
+    <a id = 'cd' class='sethotspot' href='#' title='Cusplet' posix='90' posiy='25'>There is no cusplet here </a>
   </div>
-
-
-
   <script>
-
    $(document).ready(function() {
 
       $('#my_hotspot').dopelesshotspots({
         'hotspotsTitle':'Menu',
       });
-
    });
+  </script>
+  <script>
+    function signal1() {
+      $('#hs0').trigger('click');
+    }
 
-</script>
+    function signal2() {
+      $('#hs1').trigger('click');
+    }
+
+    function signal3() {
+      $('#hs2').trigger('click');
+    }
+
+    function hide() {
+      $('#my_hotspot').trigger('hide');
+    }
+  </script>
 
 </body>
 </html>

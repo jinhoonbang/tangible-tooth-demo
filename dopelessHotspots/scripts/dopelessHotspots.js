@@ -42,35 +42,35 @@ $.fn.dopelesshotspots = function( options ) {
     $(document).on('click','.highlights_but',function(e){e.preventDefault();});
 
     if(!is_touch_device){
-        holder.on('click',function(){
+        holder.on('hide',function(){
             if(!hotspotsHidden){
                 collapseHighlight();
             }
         });
         
-        holder.on('mouseenter','.highlights_menu:not(.hidden)',function(){
-            $(this).find('.hotspots_select').css('display', 'block');
-            $(this).find('.hotspots_select').stop().animate({'margin-top':0,'opacity':1},100);
-            $(this).on('mouseleave',function(){
-                $(this).find('.hotspots_select').stop().animate({'margin-top':-30,'opacity':0},100,function(){
-                    $(this).css('display', 'none');
-                });
-            })
-        });
+        // holder.on('mouseenter','.highlights_menu:not(.hidden)',function(){
+        //     $(this).find('.hotspots_select').css('display', 'block');
+        //     $(this).find('.hotspots_select').stop().animate({'margin-top':0,'opacity':1},100);
+        //     $(this).on('mouseleave',function(){
+        //         $(this).find('.hotspots_select').stop().animate({'margin-top':-30,'opacity':0},100,function(){
+        //             $(this).css('display', 'none');
+        //         });
+        //     })
+        // });
         
         holder.on('click','.hotspot_link',function(e){
             e.stopPropagation();
             e.preventDefault();
         });
         
-        holder.on('click','.hotspot_link:not(.active)',function(e){
-            e.stopPropagation();
-            holder.find('.hotspot_link').removeClass('active');
-            $(this).addClass('active');
-            var itemid = parseInt($(this).attr('href'));
-            collapseHighlight();
-            expandHighlight(itemid);
-        });
+        // holder.on('click','.hotspot_link:not(.active)',function(e){
+        //     e.stopPropagation();
+        //     holder.find('.hotspot_link').removeClass('active');
+        //     $(this).addClass('active');
+        //     var itemid = parseInt($(this).attr('href'));
+        //     collapseHighlight();
+        //     expandHighlight(itemid);
+        // });
         
         holder.on( 'click', '.hotspot:not(.expanded)', function(e){
             e.stopPropagation();
@@ -89,85 +89,85 @@ $.fn.dopelesshotspots = function( options ) {
             collapseHighlight();
         })
         
-        holder.on('click','.hide_hotspots',function(e){
-            e.stopPropagation();
-            e.preventDefault();
-            hideHighlights();
-        })
+        // holder.on('click','.hide_hotspots',function(e){
+        //     e.stopPropagation();
+        //     e.preventDefault();
+        //     hideHighlights();
+        // })
         
-        holder.on('click','.show_hotspots',function(e){
-            e.stopPropagation();
-            e.preventDefault();
-            unhideHighlights();
-        })
+        // holder.on('click','.show_hotspots',function(e){
+        //     e.stopPropagation();
+        //     e.preventDefault();
+        //     unhideHighlights();
+        // })
     }
         
-    if(is_touch_device){
-        holder.on('touchend',function(){
-            if(!hotspotsHidden){
-                collapseHighlight();
-            }
-        });
+    // if(is_touch_device){
+    //     holder.on('touchend',function(){
+    //         if(!hotspotsHidden){
+    //             collapseHighlight();
+    //         }
+    //     });
         
-        holder.on('touchend','.highlights_menu:not(.hidden)',function(e){
-            e.preventDefault();
-            e.stopPropagation();
-            $(this).addClass('touch_exp');
-            $(this).find('.hotspots_select').css('display', 'block');
-            $(this).find('.hotspots_select').stop().animate({'margin-top':0,'opacity':1},100);
-            holder.on('touchend','.highlights_menu.touch_exp',function(e){
-                e.preventDefault();
-                e.stopPropagation();
-                $(this).find('.hotspots_select').stop().animate({'margin-top':-30,'opacity':0},100,function(){
-                    $(this).css('display', 'none');
-                    holder.find('.highlights_menu').removeClass('touch_exp');
-                });
-            })
-        });
+    //     holder.on('touchend','.highlights_menu:not(.hidden)',function(e){
+    //         e.preventDefault();
+    //         e.stopPropagation();
+    //         $(this).addClass('touch_exp');
+    //         $(this).find('.hotspots_select').css('display', 'block');
+    //         $(this).find('.hotspots_select').stop().animate({'margin-top':0,'opacity':1},100);
+    //         holder.on('touchend','.highlights_menu.touch_exp',function(e){
+    //             e.preventDefault();
+    //             e.stopPropagation();
+    //             $(this).find('.hotspots_select').stop().animate({'margin-top':-30,'opacity':0},100,function(){
+    //                 $(this).css('display', 'none');
+    //                 holder.find('.highlights_menu').removeClass('touch_exp');
+    //             });
+    //         })
+    //     });
         
-        holder.on('touchend','.hotspot_link',function(e){
-            e.stopPropagation();
-            e.preventDefault();
-        });
+    //     holder.on('touchend','.hotspot_link',function(e){
+    //         e.stopPropagation();
+    //         e.preventDefault();
+    //     });
         
-        holder.on('touchend','.hotspot_link:not(.active)',function(e){
-            e.stopPropagation();
-            holder.find('.hotspot_link').removeClass('active');
-            $(this).addClass('active');
-            var itemid = parseInt($(this).attr('href'));
-            collapseHighlight();
-            expandHighlight(itemid);
-        });
+    //     holder.on('touchend','.hotspot_link:not(.active)',function(e){
+    //         e.stopPropagation();
+    //         holder.find('.hotspot_link').removeClass('active');
+    //         $(this).addClass('active');
+    //         var itemid = parseInt($(this).attr('href'));
+    //         collapseHighlight();
+    //         expandHighlight(itemid);
+    //     });
         
-        holder.on( 'touchend', '.hotspot:not(.expanded)', function(e){
-            e.stopPropagation();
-            var itemid = parseInt($(this).attr('id').replace('hs',''));
-            collapseHighlight();
-            expandHighlight(itemid); 
-        });
+    //     holder.on( 'touchend', '.hotspot:not(.expanded)', function(e){
+    //         e.stopPropagation();
+    //         var itemid = parseInt($(this).attr('id').replace('hs',''));
+    //         collapseHighlight();
+    //         expandHighlight(itemid); 
+    //     });
         
-        holder.on( 'touchend', '.hotspot.expanded', function(e){
-            e.stopPropagation();
-            e.preventDefault();
-        });
+    //     holder.on( 'touchend', '.hotspot.expanded', function(e){
+    //         e.stopPropagation();
+    //         e.preventDefault();
+    //     });
             
-        holder.on( 'touchend', '.hotspot_icon.minus', function(e){
-            e.stopPropagation();
-            collapseHighlight();
-        })
+    //     holder.on( 'touchend', '.hotspot_icon.minus', function(e){
+    //         e.stopPropagation();
+    //         collapseHighlight();
+    //     })
         
-        holder.on('touchend','.hide_hotspots',function(e){
-            e.stopPropagation();
-            e.preventDefault();
-            hideHighlights();
-        })
+    //     holder.on('touchend','.hide_hotspots',function(e){
+    //         e.stopPropagation();
+    //         e.preventDefault();
+    //         hideHighlights();
+    //     })
         
-        holder.on('touchend','.show_hotspots',function(e){
-            e.stopPropagation();
-            e.preventDefault();
-            unhideHighlights();
-        })
-    }
+    //     holder.on('touchend','.show_hotspots',function(e){
+    //         e.stopPropagation();
+    //         e.preventDefault();
+    //         unhideHighlights();
+    //     })
+    // }
         
     function preload() {
         var hsImage = holder.find('img');
